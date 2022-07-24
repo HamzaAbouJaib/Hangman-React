@@ -90,8 +90,11 @@ const Hangman = () => {
     <div>
       {isWinner ? (
         <div>
-          <h1 className="title">You Won</h1>
-          <h1 className="title">{gameValues.randomWord} is The Correct Word</h1>
+          <div className="loss-screen">
+              <h1 className="title">You Won</h1>
+              <h1 className="title">{gameValues.randomWord} is The Correct Word</h1>
+              <button onClick={resetGame}>Reset Game</button>
+            </div>
         </div>
       ) : (
         <div>
