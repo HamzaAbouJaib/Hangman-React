@@ -1,0 +1,33 @@
+.title {
+  text-align: center;
+  font-size: 3.5rem;
+  margin-bottom: 4rem;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-around;
+}
+
+.guess-tile {
+  font-size: 6rem;
+}
+
+.guess-tiles {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.letters-container {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  margin-top: 5rem;
+}
+
+.letter-btn {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 1.5rem;
+  font-size: 2rem;
+  margin: 0.2rem;
+}
