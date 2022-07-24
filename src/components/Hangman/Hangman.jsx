@@ -1,16 +1,33 @@
 import React from "react";
 import "./hangman.css";
+import randomWords from "random-words";
 import images from "../../util/hangmanImages";
 
 //global constants
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-const Hangman = (props) => {
+const Hangman = () => {
+  function generateWord() {
+    let randomWord = randomWords({ exactly: 1, maxLength: 7 })
+      .toString()
+      .toUpperCase();
+
+    //ensure the selected word is 4 letters or greater
+    if (randomWord.length <= 3) {
+      randomWord = randomWords({ exactly: 1, maxLength: 7 })
+        .toString()
+        .toUpperCase();
+    }
+
+    return randomWord;
+    //Generate a random word using random-words module
+  }
+
   const [gameValues, setGameValues] = React.useState({
-    maxLives: props.maxLives,
+    maxLives: 6,
     mistakes: 0,
     guessed: new Set([]),
-    randomWord: props.word,
+    randomWord: generateWord(),
   });
 
   //generates '_' for unguessed letters and fills in correctly guessed letters
@@ -55,6 +72,15 @@ const Hangman = (props) => {
     );
   }
 
+  function resetGame() {
+    setGameValues({
+      maxLives: 6,
+      mistakes: 0,
+      guessed: new Set([]),
+      randomWord: generateWord(),
+    });
+  }
+
   //stores if the game is over
   const gameOver = gameValues.mistakes >= gameValues.maxLives;
   //stores if the player won
@@ -70,9 +96,10 @@ const Hangman = (props) => {
       ) : (
         <div>
           {gameOver ? (
-            <div>
+            <div className="loss-screen">
               <h1 className="title">You Lost</h1>
               <h1 className="title">The Word Was {gameValues.randomWord}</h1>
+              <button onClick={resetGame}>Reset Game</button>
             </div>
           ) : (
             <div>
