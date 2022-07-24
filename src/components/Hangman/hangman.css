@@ -31,3 +31,23 @@
   font-size: 2rem;
   margin: 0.2rem;
 }
+
+.loss-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loss-screen button {
+  font-size: 2.5rem;
+  color: white;
+  background: lightskyblue;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.loss-screen button:hover {
+  background: lightsteelblue;
+}
+
